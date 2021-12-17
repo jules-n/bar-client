@@ -1,6 +1,14 @@
 server:
   port: 9097
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_HOST:http://localhost:9098/eureka/}
+  instance:
+    instance-id: bar-client
 spring:
+  application:
+    name: bar-client
   data:
     mongodb:
       uri: mongodb://localhost:27017
@@ -25,6 +33,9 @@ spring:
           json:
             trusted:
               packages: sample.kafka
+  cloud:
+    compatibility-verifier:
+      enabled: false
 cloudkarafka:
   menu-topic: 1ix6np50-menu-update
   status-topic: 1ix6np50-status-update
